@@ -168,7 +168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Container(props) {
 	    _classCallCheck(this, Container);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Container).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Container.__proto__ || Object.getPrototypeOf(Container)).call(this, props));
 
 	    _this.updateOffset = function (_ref) {
 	      var inherited = _ref.inherited;
@@ -273,7 +273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Sticky(props) {
 	    _classCallCheck(this, Sticky);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Sticky).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Sticky.__proto__ || Object.getPrototypeOf(Sticky)).call(this, props));
 
 	    _this.updateContext = function (_ref) {
 	      var inherited = _ref.inherited;
@@ -434,34 +434,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // @see http://stackoverflow.com/questions/32875046
 	      var style = _extends({}, { transform: 'translateZ(0)' }, this.props.style);
 
-	      if (this.state.isSticky) {
-	        var _stickyStyle = {
-	          position: 'fixed',
-	          top: this.state.containerOffset,
-	          left: this.state.xOffset,
-	          width: this.state.width
-	        };
+	      //     if (this.state.isSticky) {
+	      var stickyStyle = {
+	        position: 'fixed',
+	        top: this.state.containerOffset,
+	        left: this.state.xOffset,
+	        width: this.state.width
+	      };
 
-	        var bottomLimit = this.state.distanceFromBottom - this.state.height - this.props.bottomOffset;
-	        if (this.state.containerOffset > bottomLimit) {
-	          _stickyStyle.top = bottomLimit;
-	        }
-
-	        placeholderStyle.paddingBottom = this.state.height;
-
-	        className += ' ' + this.props.stickyClassName;
-	        style = _extends({}, style, _stickyStyle, this.props.stickyStyle);
+	      var bottomLimit = this.state.distanceFromBottom - this.state.height - this.props.bottomOffset;
+	      if (this.state.containerOffset > bottomLimit) {
+	        stickyStyle.top = bottomLimit;
 	      }
+
+	      placeholderStyle.paddingBottom = this.state.height;
+
+	      className += ' ' + this.props.stickyClassName;
+	      style = _extends({}, style, stickyStyle, this.props.stickyStyle);
+	      //     }
 
 	      var _props = this.props;
 	      var topOffset = _props.topOffset;
 	      var isActive = _props.isActive;
 	      var stickyClassName = _props.stickyClassName;
-	      var stickyStyle = _props.stickyStyle;
 	      var bottomOffset = _props.bottomOffset;
 	      var onStickyStateChange = _props.onStickyStateChange;
 
-	      var props = _objectWithoutProperties(_props, ['topOffset', 'isActive', 'stickyClassName', 'stickyStyle', 'bottomOffset', 'onStickyStateChange']);
+	      var props = _objectWithoutProperties(_props, ['topOffset', 'isActive', 'stickyClassName', 'bottomOffset', 'onStickyStateChange']);
 
 	      return _react2.default.createElement(
 	        'div',
