@@ -167,7 +167,7 @@ export default class Sticky extends React.Component {
     // @see http://stackoverflow.com/questions/32875046
     let style = Object.assign({}, { transform: 'translateZ(0)' }, this.props.style);
 
-    if (this.state.isSticky) {
+//     if (this.state.isSticky) {
       const stickyStyle = {
         position: 'fixed',
         top: this.state.containerOffset,
@@ -184,7 +184,7 @@ export default class Sticky extends React.Component {
 
       className += ` ${this.props.stickyClassName}`;
       style = Object.assign({}, style, stickyStyle, this.props.stickyStyle);
-    }
+//     }
 
     const {
       topOffset,
